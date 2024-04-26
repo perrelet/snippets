@@ -1,0 +1,59 @@
+{
+
+	"print": {
+		"prefix": ["print"],
+		"body": [
+			"#{\$$$1}",
+		],
+		"description": "print"
+	},
+
+	"Less than equal page": {
+		"prefix": ["ltpage"],
+		"body": [
+			"@include media('<=page') {",
+			"",
+			"\t$1",
+			"",
+			"}",
+		],
+		"description": "Less than equal page."
+	},
+
+	"Less than equal tablet": {
+		"prefix": ["lttablet"],
+		"body": [
+			"@include media('<=tablet') {",
+			"",
+			"\t$1",
+			"",
+			"}",
+		],
+		"description": "Less than equal tablet."
+	},
+
+	"Less than equal phone-landscape": {
+		"prefix": ["ltphonelandscape"],
+		"body": [
+			"@include media('<=phone-landscape') {",
+			"",
+			"\t$1",
+			"",
+			"}",
+		],
+		"description": "Less than equal phone-landscape."
+	},
+
+	"Less than equal phone-portrait": {
+		"prefix": ["ltphoneportrait"],
+		"body": [
+			"@include media('<=phone-portrait') {",
+			"",
+			"\t$1",
+			"",
+			"}",
+		],
+		"description": "Less than equal phone-portrait."
+	},
+
+}

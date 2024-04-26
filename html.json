@@ -1,0 +1,133 @@
+{
+
+	// PHP TAGS
+
+	"PHP inline Echo": {
+
+		"prefix": ["echo", "<?=", "eee"],
+		"body": [
+			"<?= $1 ?>"
+		],
+		"description": "PHP inline Echo."
+	},
+
+	"PHP Inline Block": {
+
+		"prefix": ["<?php", "php"],
+		"body": [
+			"<?php $1 ?>"
+		],
+		"description": "PHP Inline Block"
+	},
+
+	// IF STATEMENTS
+
+	"PHP If": {
+
+		"prefix": ["if", "<?if"],
+		"body": [
+			"<?php if ($1): ?>",
+				"\t$2",
+			"<?php endif; ?>"
+		],
+		"description": "PHP If"
+	},
+
+	"PHP If Else": {
+
+		"prefix": ["ifelse", "<?ifelse"],
+		"body": [
+			"<?php if ($1): ?>",
+				"\t$2",
+			"<?php else: ?>",
+				"\t$3",
+			"<?php endif; ?>"
+		],
+		"description": "PHP If Else"
+	},
+
+	"PHP If Elseif Else": {
+
+		"prefix": ["ifelseif", "<?ifelseif"],
+		"body": [
+			"<?php if ($1): ?>",
+				"\t$2",
+			"<?php elseif ($3): ?>",
+				"\t$4",
+			"<?php else: ?>",
+				"\t$5",
+			"<?php endif; ?>"
+		],
+		"description": "PHP If Elseif Else"
+	},
+
+
+	// FOREACH LOOPS
+	
+	"PHP Foreach": {
+
+		"prefix": ["foreach", "<?foreach"],
+		"body": [
+			"<?php foreach ($${item}s as $${item}): ?>",
+				"\t$0",
+			"<?php endforeach; ?>"
+		],
+		"description": "PHP Foreach"
+	},
+
+	"PHP Foreach with Index": {
+
+		"prefix": ["forieach", "<?forieach"],
+		"body": [
+			"<?php foreach ($${item}s as $$i => $${item}): ?>",
+				"\t$0",
+			"<?php endforeach; ?>"
+		],
+		"description": "PHP Foreach with Index"
+	},
+
+	"PHP Foreach with Key": {
+
+		"prefix": ["forkeach", "<?forkeach"],
+		"body": [
+			"<?php foreach ($${item}s as $${key} => $${item}): ?>",
+				"\t$0",
+			"<?php endforeach; ?>"
+		],
+		"description": "PHP Foreach with Key"
+	},
+
+	"PHP If Foreach": {
+
+		"prefix": ["ifforeach", "<?ifforeach"],
+		"body": [
+			"<?php if ($${item}s) foreach ($${item}s as $${item}): ?>",
+				"\t$0",
+			"<?php endforeach; ?>"
+		],
+		"description": "PHP If Foreach"
+	},
+
+	"PHP If Foreach with Index": {
+
+		"prefix": ["ifforieach", "<?ifforieach"],
+		"body": [
+			"<?php if ($${item}s) foreach ($${item}s as $$i => $${item}): ?>",
+				"\t$0",
+			"<?php endforeach; ?>"
+		],
+		"description": "PHP If Foreach with Index"
+	},
+
+	"PHP If Foreach with Key": {
+
+		"prefix": ["ifforkeach", "<?ifforkeach"],
+		"body": [
+			"<?php if ($${item}s) foreach ($${item}s as $${key} => $${item}): ?>",
+				"\t$0",
+			"<?php endforeach; ?>"
+		],
+		"description": "PHP If Foreach with Key"
+	},
+
+}

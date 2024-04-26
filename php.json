@@ -1,0 +1,567 @@
+{
+
+	// ECHO / RETURN
+
+	"Echo DIV": {
+		"prefix": ["ediv", "echodiv"],
+		"body": [
+			"echo \"<div class='$1'>$2</div>\";",
+		],
+		"description": "Echo div."
+	},
+
+	"Return DIV": {
+		"prefix": ["rdiv", "retdiv"],
+		"body": [
+			"$$html .= \"<div class='$1'>$2</div>\";",
+		],
+		"description": "Echo div."
+	},
+
+	"Echo DIV Wrapper": {
+		"prefix": ["edivwrap", "edw", "echodivwrap"],
+		"body": [
+			"echo \"<div class='$1'>\";",
+				"\t",
+				"\t$2",
+				"\t",
+			"echo \"</div>\";",
+		],
+		"description": "Echo div."
+	},
+
+	"Return DIV Wrapper": {
+		"prefix": ["rdivwrap", "rdw", "retdivwrap"],
+		"body": [
+			"$$html .=  \"<div class='$1'>\";",
+				"\t",
+				"\t$2",
+				"\t",
+			"$$html .=  \"</div>\";",
+		],
+		"description": "Echo div."
+	},
+
+	// METHODS
+
+	"Public Function": {
+		"prefix": ["pubfunc"],
+		"body": [
+			"public function $1 ($2) {",
+				"",
+				"\t$3",
+				"",
+			"}"
+		],
+		"description": "Public method."
+	},
+
+	"Public Static Function": {
+		"prefix": ["pubstatfunc"],
+		"body": [
+			"public static function $1 ($2) {",
+				"",
+				"\t$3",
+				"",
+			"}"
+		],
+		"description": "Public static method."
+	},
+
+	"Protected Function": {
+		"prefix": ["protfunc"],
+		"body": [
+			"protected function $1 ($2) {",
+				"",
+				"\t$3",
+				"",
+			"}"
+		],
+		"description": "Protected method."
+	},
+
+	"Protected Static Function": {
+		"prefix": ["protstatfunc"],
+		"body": [
+			"protected static function $1 ($2) {",
+				"",
+				"\t$3",
+				"",
+			"}"
+		],
+		"description": "Protected static method."
+	},
+
+	"Private Function": {
+		"prefix": ["privfunc"],
+		"body": [
+			"private function $1 ($2) {",
+				"",
+				"\t$3",
+				"",
+			"}"
+		],
+		"description": "Private method."
+	},
+
+	"Private Static Function": {
+		"prefix": ["privstatfunc"],
+		"body": [
+			"private static function $1 ($2) {",
+				"",
+				"\t$3",
+				"",
+			"}"
+		],
+		"description": "Private static method."
+	},
+
+	// CONTROL STRUCTURES
+
+	"If Foreach": {
+		"prefix": ["ifforeach"],
+		"body": [
+			"if ($${item}s) foreach ($${item}s as $${item}) {",
+				"",
+				"\t$0",
+				"",
+			"}"
+		],
+		"description": "If Foreach"
+	},
+
+	"If Foreach Key": {
+		"prefix": ["ifforkeach"],
+		"body": [
+			"if ($${item}s) foreach ($${item}s as $${key} => $${item}) {",
+				"",
+				"\t$0",
+				"",
+			"}"
+		],
+		"description": "If Foreach Key"
+	},
+
+	"If Foreach Index": {
+		"prefix": ["ifforieach"],
+		"body": [
+			"if ($${item}s) foreach ($${item}s as \\$i => $${item}) {",
+				"",
+				"\t$0",
+				"",
+			"}"
+		],
+		"description": "If Foreach Index"
+	},
+
+	// HOoKS
+
+	"Add Filter": {
+		"prefix": ["addfilter"],
+		"body": [
+			"add_filter('$1', [$$this, '$2']$3);",
+		],
+		"description": "Add a filter."
+	},
+
+	"Add Action": {
+		"prefix": ["addaction"],
+		"body": [
+			"add_action('$1', [$$this, '$2']$3);",
+		],
+		"description": "Add an action."
+	},
+
+	"Add Action Closure": {
+		"prefix": ["actclosure", "actionclosure"],
+		"body": [
+			"add_action('$1', function () {",
+				"\t",
+				"\t$2",
+				"\t",
+			"});",
+		],
+		"description": "Add an action closure."
+	},
+
+	// DIGITALIS FUNCTIONS
+
+	"dprint": {
+		"prefix": ["dprint"],
+		"body": [
+			"dprint($1);",
+		],
+		"description": "Print for admins only."
+	},
+
+	"jprint": {
+		"prefix": ["jprint"],
+		"body": [
+			"jprint($1);",
+		],
+		"description": "Print to javascript console."
+	},
+
+	// WP FUNCTIONS
+
+	"Logged In": {
+		"prefix": ["loggedin"],
+		"body": [
+			"is_user_logged_in()",
+		],
+		"description": "is_user_logged_in"
+	},
+
+	"WP Parse Args": {
+		"prefix": ["parseargs"],
+		"body": [
+			"$$args = wp_parse_args($$args, [",
+				"\t$1",
+			"]);",
+		],
+		"description": "Hide a test behind a random get parameter."
+	},
+
+	// HELPERS
+
+	"Init Test": {
+		"prefix": ["inittest"],
+		"body": [
+			"add_action('init', function () {",
+				"\t",
+				"\tif (!isset($$_GET[9$RANDOM$RANDOM])) return;",
+				"\t",
+				"\t$1",
+				"\t",
+			"});"
+		],
+		"description": "Hide a test behind a random get parameter."
+	},
+
+	"Get Test": {
+		"prefix": ["gettest"],
+		"body": [
+			"if (isset($$_GET[9$RANDOM$RANDOM])) {",
+				"\t",
+				"\t$1",
+				"\t",
+			"}",
+		],
+		"description": "Hide a test behind a random get parameter."
+	},
+
+	"Admin Test": {
+		"prefix": ["admintest"],
+		"body": [
+			"add_action('init', function () {",
+				"\t",
+				"\tif (!current_user_can('administrator')) return;",
+				"\t",
+				"\t$1",
+				"\t",
+			"});"
+		],
+		"description": "Hide a test for non-admin users."
+	},
+
+	// DIGITALIS::POST_TYPE
+
+	"post_type::run": {
+		"prefix": ["post_type::run", "ptrun"],
+		"body": [
+			"public function run () {",
+				"",
+				"\t$1",
+				"",
+			"}",
+		],
+	},
+
+	"post_type::filter_args": {
+		"prefix": ["post_type::filter_args", "ptfilter_args"],
+		"body": [
+			"protected function filter_args (&$$args) {",
+				"",
+				"\t$1",
+				"",
+			"}",
+		],
+	},
+
+	"post_type::get_args": {
+		"prefix": ["post_type::get_args", "ptget_args", "ptargs"],
+		"body": [
+			"protected function get_args ($$args) {",
+				"",
+				"\t$1",
+				"",
+				"\treturn $$args;",
+				"",
+			"}",
+		],
+	},
+
+	"post_type::get_rewrite": {
+		"prefix": ["post_type::get_rewrite", "ptget_rewrite", "ptrewrite"],
+		"body": [
+			"protected function get_rewrite ($$rewrite) {",
+				"",
+				"\t$1",
+				"",
+				"\treturn $$rewrite;",
+				"",
+			"}",
+		],
+	},
+
+	"post_type::get_rewrite": {
+		"prefix": ["post_type::get_supports", "ptget_supports", "ptsupports"],
+		"body": [
+			"protected function get_supports ($$supports) {",
+				"",
+				"\t$1",
+				"",
+				"\treturn $$supports;",
+				"",
+			"}",
+		],
+	},
+
+	"post_type::get_rewrite": {
+		"prefix": ["post_type::get_labels", "ptget_labels", "ptlabels"],
+		"body": [
+			"protected function get_labels ($$labels) {",
+				"",
+				"\t$1",
+				"",
+				"\treturn $$labels;",
+				"",
+			"}",
+		],
+	},
+
+	"post_type::after_insert": {
+		"prefix": ["post_type::after_insert", "ptafter_insert"],
+		"body": [
+			"public function after_insert ($$post_id, $$post, $$update, $$post_before) {",
+				"",
+				"\t$1",
+				"",
+			"}",
+		],
+	},
+
+	// DIGITALIS::POST
+
+	"post::class": {
+		"prefix": ["post::class", "postclass"],
+		"body": [
+			"namespace $1;",
+			"",
+			"use Digitalis\\Post;",
+			"",
+			"class $2 extends Post {",
+				"",
+				"\tprotected static $$post_type = '$3';",
+				"",
+				"\t$4",
+				"",
+			"}",
+		],
+	},
+
+	"post::get_query_vars": {
+		"prefix": ["post::get_query_vars", "pquery_vars", "pqv"],
+		"body": [
+			"public static function get_query_vars ($$args = [], $$recurring = false) {",
+				"",
+				"\t$$qv = new \\Digitalis\\Query_Vars(parent::get_query_vars($$args, $$recurring));",
+				"",
+				"\tif (\$$$1 = static::get_query_var('$1', $_REQUEST['$1'] ?? false, $$args)) ",
+				"",
+				"\treturn $$qv->to_array();",
+				"",
+			"}",
+		],
+	},
+
+	// DIGITALIS::VIEW
+
+	"view::class": {
+		"prefix": ["view::class", "vclass"],
+		"body": [
+			"namespace $1;",
+			"",
+			"class $2 extends View {",
+				"",
+				"\t$3",
+				"",
+			"}",
+		],
+	},
+
+	"view::lateparams": {
+		"prefix": ["view::lsbparams", "vlsbparams", "view::lateparams", "vlateparams"],
+		"body": [
+			"protected static $$params = []; // Because this view invokes another view, we need this in order to correctly LSB.$1",
+		],
+	},
+
+	"view::template": {
+		"prefix": ["view::template", "vtemplate"],
+		"body": [
+			"protected static $$template = '$1';",
+		],
+	},
+
+	"view::get_template": {
+		"prefix": ["view::get_template", "vget_template"],
+		"body": [
+			"public static function get_template ($$params) {",
+				"",
+				"\t$1",
+				"",
+				"\treturn static::$$template;",
+				"",
+			"}",
+		],
+	},
+
+	"view::defaults": {
+		"prefix": ["view::defaults", "vdefaults"],
+		"body": [
+			"protected static $$defaults = [",
+				"\t$1"
+			"];",
+		],
+	},
+
+	"view::params": {
+		"prefix": ["view::params", "vparams"],
+		"body": [
+			"public static function params ($$p) {",
+				"",
+				"\t$1",
+				"",
+				"\treturn $$p;",
+				"",
+			"}",
+		],
+	},
+
+	"view::permission": {
+		"prefix": ["view::permission", "vpermission"],
+		"body": [
+			"protected static function permission ($$p) {",
+				"",
+				"\treturn $1;",
+				"",
+			"}",
+		],
+	},
+
+	"view::condition": {
+		"prefix": ["view::condition", "vcondition"],
+		"body": [
+			"protected static function condition ($$p) {",
+				"",
+				"\treturn $1;",
+				"",
+			"}",
+		],
+	},
+
+	"view::render": {
+		"prefix": ["view::view", "vview", "view::render", "vrender"],
+		"body": [
+			"public static function view ($$p = []) {",
+				"",
+				"\t$1",
+				"",
+			"}",
+		],
+	},
+
+	"view::before": {
+		"prefix": ["view::before", "vbefore"],
+		"body": [
+			"public static function before ($$p) {",
+				"",
+				"\t$1",
+				"",
+			"}",
+		],
+	},
+
+	"view::after": {
+		"prefix": ["view::after", "vafter"],
+		"body": [
+			"public static function after ($$p) {",
+				"",
+				"\t$1",
+				"",
+			"}",
+		],
+	},
+
+	"view::before_first": {
+		"prefix": ["view::before_first", "vbefore_first"],
+		"body": [
+			"protected static function before_first ($$p) {",
+				"",
+				"\t$1",
+				"",
+			"}",
+		],
+	},
+
+	"view::after_first": {
+		"prefix": ["view::after_first", "vafter_first"],
+		"body": [
+			"protected static function after_first ($$p) {",
+				"",
+				"\t$1",
+				"",
+			"}",
+		],
+	},
+
+	// DIGITALIS::INTEGRATION
+
+	"integration::class": {
+		"prefix": ["integration::class", "iclass"],
+		"body": [
+			"namespace $1;",
+			"",
+			"class $2 extends \\Digitalis\\Integration {",
+				"",
+				"\tpublic function run () {",
+					"",
+					"\t\t$3",
+					"",
+				"\t}",
+				"",
+			"}",
+		],
+	},
+
+	// DIGITALIS::FEATURE
+
+	"feature::class": {
+		"prefix": ["feature::class", "fclass"],
+		"body": [
+			"namespace $1;",
+			"",
+			"class $2 extends \\Digitalis\\Feature {",
+				"",
+				"\tpublic function run () {",
+					"",
+					"\t\t$3",
+					"",
+				"\t}",
+				"",
+			"}",
+		],
+	},
+
+}
